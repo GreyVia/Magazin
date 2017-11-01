@@ -75,9 +75,9 @@
         </div>
         <!-- /.info-boxes --> 
 
-<script type="text/javascript"> 
+<script type="text/javascript">
     $(document).ready(function(){
-//фиксация меню
+
         var $menu = $("#menu");
 
         $(window).scroll(function(){
@@ -86,6 +86,9 @@
                     $(this).removeClass("defaultnav")
                            .addClass("fixed transbg")
                            .fadeIn('fast');
+                   if ($('.headerVertical').width() == 176){
+                       $(".fixed").css({'width':$(window).width()-$('.headerVertical').width()});
+                   }
                 });
             } else if($(this).scrollTop() <= 100 && $menu.hasClass("fixed")) {
                 $menu.fadeOut('fast',function(){
@@ -109,26 +112,26 @@
             });//hover
     });//jQuery
 </script>
-<script type="text/javascript"> 
-var weight = 1500; //синхронный скрол кукси меню
+<script type="text/javascript">
 var calc = 0;
 var scrollnow = 300;
+
 $(window).scroll(function() {
-    if($(window).scrollTop()>300) {
+    if($(window).scrollTop()>100) {
         if($(window).scrollTop() > scrollnow) {
             scrollnow = $(window).scrollTop()-1;
             $('.ourMenuCategories__scroller').animate({scrollLeft: calc},0);
-            calc += 5;
+            calc += 7;
             if (calc <= 0) calc = 0;
             if (calc >= 1150) calc = 1150;
-            console.log(calc);
+            //console.log(calc);
         } else {
             scrollnow = $(window).scrollTop()+1;
             $('.ourMenuCategories__scroller').animate({scrollLeft: calc},0);
-            calc -= 5;
+            calc -= 7;
             if (calc <= 0) calc = 0;
             if (calc >= 1150) calc = 1150;
-            console.log(calc);
+            //console.log(calc);
         }
     } else {
         calc = 0;
